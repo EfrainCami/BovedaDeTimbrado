@@ -1,11 +1,14 @@
 <template>
-  <div v-on:click="activarRadio"
-    class="flex border-black bg-white justify-center rounded-md overflow-hidden cursor-pointer">
-    <div class="text-center w-full" :class="{ 'bg-blue-600 text-white': checked }">
+  <!-- dimensiones, margin y padding, display, elementos visuales (cursor pointer), asignación de colores -->
+  <div 
+    class="w-48 flex justify-center border-2 rounded-xl cursor-pointer border-blue-800" 
+    @click="activarRadio"
+  >
+    <div class="w-full text-center rounded-l-md" :class="{ 'bg-blue-800 text-white': checked }">
       <p>{{ option1 }}</p>
     </div>
-    <input class="" type="radio" :checked="checked" />
-    <div class="text-center w-full" :class="{ 'bg-blue-600 text-white': !checked }">
+    <input class="hidden" type="radio" :checked="checked" />
+    <div class="w-full text-center rounded-r-md" :class="{ 'bg-blue-800 text-white': !checked }">
       <p>{{ option2 }}</p>
     </div>
   </div>
@@ -25,7 +28,9 @@ const props = defineProps({
   }
 });
 
-let checked = ref(true);
+/* const fnFlecha = () => {}*/
+
+const checked = ref(true);
 function activarRadio() {
   if (checked.value) {
     checked.value = false;
@@ -33,19 +38,5 @@ function activarRadio() {
     checked.value = true;
   }
   console.log(checked.value)
-}
-
-let fondoOp1 = ref("bg-blue-400")
-let fondoOp2 = ref("bg-white")
-function cambiarColor() {
-  if (checked.value) {
-    fondoOp1.value = "bg-white";
-    fondoOp2.value = "bg-blue-400";
-    console.log(fondoOp1.value);
-  } else {
-    fondoOp1.value = "bg-blue-400";
-    fondoOp2.value = "bg-white";
-    console.log(fondoOp1.value);
-  }
 }
 </script>
