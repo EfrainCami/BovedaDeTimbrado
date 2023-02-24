@@ -1,47 +1,51 @@
 <template>
-  <div
-    v-on:click="activarRadio"
+  <div v-on:click="activarRadio"
     class="flex border-black bg-white justify-center rounded-md overflow-hidden cursor-pointer">
-    <div :class="fondoOp1">
-        <p>3.3</p>
+    <div class="text-center w-full" :class="{ 'bg-blue-600 text-white': checked }">
+      <p>{{ option1 }}</p>
     </div>
-    <input
-    class="hidden"
-      type="radio"
-      :checked="checked"
-    />
-    <div :class="fondoOp2">
-        <p>4.0</p>
+    <input class="" type="radio" :checked="checked" />
+    <div class="text-center w-full" :class="{ 'bg-blue-600 text-white': !checked }">
+      <p>{{ option2 }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+
+const props = defineProps({
+  option1: {
+    type: String,
+    default: "option1"
+  },
+  option2: {
+    type: String,
+    default: "option2"
+  }
+});
+
 let checked = ref(true);
 function activarRadio() {
-    if (checked.value) {
-        cambiarColor()
-        checked.value = false;
-    } else {
-        cambiarColor()
-        checked.value = true;
-    }
-    console.log(checked.value)
+  if (checked.value) {
+    checked.value = false;
+  } else {
+    checked.value = true;
+  }
+  console.log(checked.value)
 }
 
-let fondoOp1 = ref("text-center bg-blue-400 w-full")
-let fondoOp2 = ref("text-center bg-white w-full")
+let fondoOp1 = ref("bg-blue-400")
+let fondoOp2 = ref("bg-white")
 function cambiarColor() {
-  if(checked.value){
-    fondoOp1.value = "text-center bg-white w-full";
-    fondoOp2.value = "text-center bg-blue-400 w-full";
+  if (checked.value) {
+    fondoOp1.value = "bg-white";
+    fondoOp2.value = "bg-blue-400";
     console.log(fondoOp1.value);
-  }else{
-    fondoOp1.value = "text-center bg-blue-400 w-full";
-    fondoOp2.value = "text-center bg-white w-full";
+  } else {
+    fondoOp1.value = "bg-blue-400";
+    fondoOp2.value = "bg-white";
     console.log(fondoOp1.value);
   }
 }
-
 </script>

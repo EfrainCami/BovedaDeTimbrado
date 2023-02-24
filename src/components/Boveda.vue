@@ -15,8 +15,8 @@
       <input type="text" placeholder="Tipo de comprobante" class="shadow-md" />
       <input type="text" placeholder="Monto Mínimo" class="shadow-md" />
       <input type="text" placeholder="Monto Máximo" class="shadow-md" />
-      <Radio></Radio>
-      <Radio></Radio>
+      <Radio option1="3.3" option2="4.4"></Radio>
+      <Radio option1="Emitidas" option2="Canceladas"></Radio>
       <button class="bg-blue-700 text-white rounded-xl">
         <i class="fa-solid fa-magnifying-glass"></i> Buscar
       </button>
